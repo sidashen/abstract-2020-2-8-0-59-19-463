@@ -1,71 +1,39 @@
 package com;
 
+import java.util.Objects;
+
 public class Direction {
-  private final char direction;
+  private final Directions directions;
 
-  public Direction(char direction) {
-    this.direction = direction;
+  public Direction(Directions directions) { this.directions = directions;}
+
+  public Directions turnRight() {
+    return this.directions.turnRight();
   }
 
-  public Direction turnRight() {
-
-    switch (direction) {
-      case 'N':
-        return new Direction('E');
-      case 'S':
-        return new Direction('W');
-      case 'E':
-        return new Direction('N');
-      case 'W':
-        return new Direction('S');
-      default:
-        throw new IllegalArgumentException();
-    }
+  public Directions turnLeft() {
+    return this.directions.turnLeft();
   }
-
-  public Direction turnLeft() {
-    switch (direction) {
-      case 'N':
-        return new Direction('W');
-      case 'S':
-        return new Direction('E');
-      case 'E':
-        return new Direction('N');
-      case 'W':
-        return new Direction('S');
-      default:
-        throw new IllegalArgumentException();
-    }
-  }
-
-  public interface ChangeDirection {
-    void turnLeft();
-    void turnRight();
-  }
-
-  
 
 
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
-    Direction direction1 = (Direction) o;
-
-    if (direction != direction1.direction) return false;
-
-    return true;
+    Direction direction = (Direction) o;
+    return Objects.equals(directions, direction.directions);
   }
 
   @Override
   public int hashCode() {
-    return (int) direction;
+    return Objects.hash(directions);
   }
 
   @Override
   public String toString() {
-    return "Direction{direction=" + direction + '}';
+    return "Direction{direction=" + directions + '}';
   }
 
 }
+
+
