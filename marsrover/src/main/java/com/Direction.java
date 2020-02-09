@@ -8,6 +8,7 @@ public class Direction {
   }
 
   public Direction turnRight() {
+
     switch (direction) {
       case 'N':
         return new Direction('E');
@@ -36,6 +37,14 @@ public class Direction {
         throw new IllegalArgumentException();
     }
   }
+
+  public interface ChangeDirection {
+    void turnLeft();
+    void turnRight();
+  }
+
+  
+
 
   @Override
   public boolean equals(Object o) {
